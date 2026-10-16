@@ -1,0 +1,20 @@
+FRONTEND - EMPLEABILIDAD Y RED DE EGRESADOS  (SvelteKit + Bootstrap + DataTables)
+================================================================================
+EN TU COMPUTADOR
+   npm install
+   npm run dev -- --open        (usa la API local http://127.0.0.1:8000)
+
+PARA PUBLICAR EN NETLIFY
+   1) Revisa .env.production: VITE_API_URL debe ser la dirección de tu API en Render.
+   2) npm install
+   3) npm run build             (crea la carpeta "build")
+   4) Netlify > tu sitio > Deploys > arrastra la carpeta "build".
+   5) Abre el sitio con Ctrl+Shift+R.
+
+CUENTAS DE PRUEBA (contraseña Demo1234; en el login elige el ROL de cada cuenta)
+   Administrador : carlos.rodriguez@empleabilidad.com
+   Coordinador   : laura.hernandez@empleabilidad.com
+   Egresado      : daniel.penaranda@correo.com
+
+En la pantalla de login aparece si la API y la base de datos están conectadas.
+Todas las tablas usan la librería DataTables (src/lib/components/DataTable.svelte).

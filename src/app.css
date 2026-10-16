@@ -1,0 +1,127 @@
+/* Paleta del sistema. Cada rol tiene su propio color de identidad,
+   así se nota de un vistazo con qué rol estás navegando. */
+:root {
+	--navy: #223462;      /* Administrador */
+	--teal: #128f83;      /* Egresado */
+	--amber: #d98a25;     /* Empresa Aliada */
+	--blue: #2540a8;
+	--green: #1c8a4c;
+	--red: #c23b3b;
+	--bg: #f4f6fb;
+}
+
+body {
+	background: var(--bg);
+}
+
+.navbar-brand {
+	font-weight: 700;
+	letter-spacing: 0.2px;
+}
+
+/* Navbar y estado activo del menú lateral cambian de color según el rol activo */
+.rol-egresado .navbar-rol { background: linear-gradient(90deg, var(--teal), #12b3a0) !important; }
+.rol-egresado .sidebar-link.active { background: var(--teal) !important; color: #fff !important; }
+.rol-egresado .btn-primary { background: var(--teal); border-color: var(--teal); }
+
+.rol-coordinador .navbar-rol { background: linear-gradient(90deg, #c97a00, var(--amber)) !important; }
+.rol-coordinador .sidebar-link.active { background: var(--amber) !important; color: #241a00 !important; }
+.rol-coordinador .btn-primary { background: var(--amber); border-color: var(--amber); color: #241a00; }
+
+.rol-admin .navbar-rol { background: linear-gradient(90deg, #0c1638, var(--navy)) !important; }
+.rol-admin .sidebar-link.active { background: var(--navy) !important; color: #fff !important; }
+.rol-admin .btn-primary { background: var(--blue); border-color: var(--blue); }
+
+.sidebar-link {
+	transition: background 0.15s ease, color 0.15s ease;
+	color: #333;
+}
+.sidebar-link:hover:not(.active) {
+	background: #eef1fa;
+}
+
+/* Tarjetas con un poco más de vida */
+.card {
+	border: 1px solid #e7e9f2;
+}
+.card.stat-card h2,
+.card.stat-card h3 {
+	font-weight: 700;
+}
+
+/* Chip de rol en la navbar */
+.chip-rol {
+	background: rgba(255, 255, 255, 0.18);
+	padding: 3px 10px;
+	border-radius: 20px;
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: capitalize;
+}
+
+/* ===== Banner de bienvenida (aparece dentro del sistema) ===== */
+.hero-bienvenida {
+	position: relative;
+	overflow: hidden;
+	border-radius: 18px;
+	padding: 28px 32px;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	box-shadow: 0 8px 24px rgba(20, 30, 80, 0.15);
+	background: linear-gradient(120deg, var(--navy), var(--blue));
+}
+.rol-egresado .hero-bienvenida { background: linear-gradient(120deg, #0a6b61, #14c2ac); }
+.rol-coordinador .hero-bienvenida { background: linear-gradient(120deg, #b96a00, #f5b13a); color: #241a00; }
+.rol-admin .hero-bienvenida { background: linear-gradient(120deg, #0c1638, #2f4fd0); }
+
+.hero-bienvenida::before,
+.hero-bienvenida::after {
+	content: '';
+	position: absolute;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.12);
+}
+.hero-bienvenida::before { width: 220px; height: 220px; right: -60px; top: -80px; }
+.hero-bienvenida::after { width: 140px; height: 140px; right: 120px; bottom: -70px; }
+
+.hero-bienvenida h2 { font-weight: 800; margin: 8px 0 4px; }
+.hero-bienvenida p { margin: 0; opacity: 0.9; }
+.hero-chip {
+	background: rgba(255, 255, 255, 0.22);
+	padding: 4px 12px;
+	border-radius: 20px;
+	font-size: 12px;
+	font-weight: 700;
+}
+.hero-icono { font-size: 84px; opacity: 0.85; position: relative; z-index: 1; }
+
+/* Tarjetas de acceso rápido */
+.acceso-card {
+	border: 0;
+	border-radius: 16px;
+	padding: 20px;
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	box-shadow: 0 6px 16px rgba(20, 30, 80, 0.12);
+	transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.acceso-card:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(20, 30, 80, 0.2); color: #fff; }
+.acceso-card i { font-size: 30px; }
+.acceso-card .n { font-size: 30px; font-weight: 800; line-height: 1.1; }
+.bg-g-blue { background: linear-gradient(135deg, #35509c, #5e7fd6); }
+.bg-g-green { background: linear-gradient(135deg, #21855a, #4cb384); }
+.bg-g-amber { background: linear-gradient(135deg, #c98a2f, #e8b563); color: #241a00 !important; }
+.bg-g-purple { background: linear-gradient(135deg, #6552a8, #9483d6); }
+.bg-g-red { background: linear-gradient(135deg, #b3524f, #d98784); }
+.bg-g-teal { background: linear-gradient(135deg, #1a7a70, #3fb3a3); }
+.bg-g-amber:hover { color: #241a00 !important; }
+
+/* Barra lateral responsive */
+.sidebar-nav { width: 250px; min-height: calc(100vh - 56px); }
+@media (max-width: 768px) {
+	.sidebar-nav { position: fixed; z-index: 1030; top: 56px; left: -270px; height: calc(100vh - 56px); transition: left .2s ease; box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+	.sidebar-nav.abierto { left: 0; }
+}
