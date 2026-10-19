@@ -7,7 +7,7 @@
 	let q = $state('');
 	let orden = $state({ clave: null, asc: true });
 	let pagina = $state(1);
-	let tam = $state(porPagina);
+	let tam = $state(PorPagina);
 
 	const valor = (f, c) => (c.valor ? c.valor(f) : f[c.clave]);
 	const texto = (f, c) => String(valor(f, c) ?? '');
